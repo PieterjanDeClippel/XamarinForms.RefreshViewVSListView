@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:RefreshViewDemo.ViewModels"
+             x:Class="RefreshViewDemo.Pages.RefreshViewPage">
+    <ContentPage.BindingContext>
+        <vm:RefreshVM x:Name="viewModel" />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <RefreshView IsRefreshing="{Binding IsLoading}" Command="{Binding RefreshCommand}">
+            <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <StackLayout Padding="0,5,0,0">
+                    <StackLayout BindableLayout.ItemsSource="{Binding LogMessages}" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <Label Text="{Binding .}" Padding="10" HorizontalOptions="FillAndExpand" VerticalOptions="Start" />
+                                    <BoxView BackgroundColor="LightBlue" HeightRequest="1" Margin="0" />
+                                </StackLayout>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </RefreshView>
+    </ContentPage.Content>
+</ContentPage>
